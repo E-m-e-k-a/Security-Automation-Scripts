@@ -170,6 +170,68 @@ Result: LOW severity (Score: 30)
 - Security operations optimization
 
 ---
+---
+
+### 2. Log Parser
+
+**Purpose:** Automatically scans log files for suspicious activity patterns
+
+**Functionality:**
+- Reads any log file from system
+- Scans against predefined suspicious patterns
+- Displays numbered list of findings
+- Handles errors gracefully
+- Case-insensitive pattern matching
+
+**Suspicious Patterns Detected:**
+- Failed authentication attempts
+- Invalid user access
+- Denied/blocked connections
+- System errors and warnings
+- Web attack signatures (SQL injection, directory traversal)
+- Network scanning activity
+
+**Usage:**
+```bash
+python log_parser.py
+```
+
+**Input Required:**
+- Path to log file
+
+**Output:**
+- Total entries scanned
+- Number of suspicious entries found
+- Numbered list of suspicious log lines
+
+**Example:**
+```
+==================================================
+SOC Log Parser
+==================================================
+
+Enter log file path: /var/log/auth.log
+
+✅ Successfully loaded 150 log entries
+🔍 Scanning for 20 suspicious patterns...
+
+==================================================
+SCAN RESULTS
+==================================================
+Total log entries scanned: 150
+Suspicious entries found: 3
+==================================================
+
+🚨 SUSPICIOUS ENTRIES:
+--------------------------------------------------
+1. Jun 8 13:15:23 kali sshd: Failed password for root from 192.168.1.100
+2. Jun 8 13:15:24 kali sshd: Invalid user admin from 192.168.1.100
+3. Jun 8 13:15:25 kali kernel: iptables DENIED IN=eth0 SRC=45.33.32.156
+
+==================================================
+Scan Complete!
+==================================================
+```
 
 ## 📞 Contact
 
