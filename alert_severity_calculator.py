@@ -45,6 +45,41 @@ elif severity_score >= 31:
 else:
     severity_level = "LOW"
 
+# MITRE ATT&CK Mapping
+mitre_mapping = {
+    "malware": {
+        "tactic": "Execution",  # WHY attacker does it
+        "technique": "T1204",   # MITRE ID
+        "technique_name": "User Execution",  # Human readable name
+        "url": "https://attack.mitre.org/techniques/T1204" # Reference
+    },
+    "phishing": {
+        "tactic": "Initial Access",
+        "technique": "T1566",
+        "technique_name": "Phishing",
+        "url": "https://attack.mitre.org/techniques/T1566"
+    },
+    "brute_force": {
+        "tactic": "Credential Access",
+        "technique": "T1110",
+        "technique_name": "Brute Force",
+        "url": "https://attack.mitre.org/techniques/T1110"
+    },
+    "unauthorized_access": {
+        "tactic": "Initial Access",
+        "technique": "T1078",
+        "technique_name": "Valid Accounts",
+        "url": "https://attack.mitre.org/techniques/T1078"
+    }
+}
+
+# Get MITRE info for alert type
+mitre_info = mitre_mapping.get(alert_type, {
+    "tactic": "Unknown",
+    "technique": "Unknown",
+    "technique_name": "Unknown",
+    "url": "https://attack.mitre.org"
+})
 print("\n" + "=" * 50)
 print("ANALYSIS RESULT")
 print("=" * 50)
@@ -54,5 +89,9 @@ print(f"Failed Attempts: {failed_attempts}")
 print(f"Affected Systems: {affected_systems}")
 print(f"\nSeverity Score: {severity_score}")
 print(f"Priority Level: {severity_level}")
+print(f"\nMITRE ATT&CK MAPPING:")
+print(f"Tactic: {mitre_info['tactic']}")
+print(f"Technique: {mitre_info['technique']} - {mitre_info['technique_name']}")
+print(f"Reference: {mitre_info['url']}")
 print("=" * 50)
   
