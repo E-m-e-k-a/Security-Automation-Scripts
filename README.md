@@ -110,6 +110,7 @@ python alert_severity_calculator.py
 
 **Planned Features:**
 - Machine learning for adaptive scoring
+-  ✅ MITRE ATT&CK framework mapping (COMPLETED)
 - Integration with SIEM platforms (Splunk, ELK)
 - Threat intelligence feed correlation
 - Historical alert database
